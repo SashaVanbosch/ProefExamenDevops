@@ -2,14 +2,10 @@ FROM node:16-alpine
 
 WORKDIR /app
 
-
-COPY --chown=node:node ./package* ./
-
+COPY ./package* ./
 RUN npm ci --production
 
-COPY --chown=node:node ./*.js ./
+COPY ./*.js ./
 
-USER node
 EXPOSE 3000
-
-CMD [ "node", "index.js" ]
+CMD ["node", "index.js"]
